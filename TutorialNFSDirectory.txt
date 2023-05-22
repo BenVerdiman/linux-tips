@@ -1,0 +1,25 @@
+How to share a directory from one server to another without downloading
+Step by step tutorial
+
+1st step : On the server, sharing the folder (Server 2), install the NFS: 
+sudo apt update
+sudo apt install nfs-kernel-server
+
+2nd step : Identify the folder you want to share. Let's say the folder you want to share is /path/to/folder.
+
+3rd step : Open the ‘/etc/exports’ file with a text editor
+
+4th step : Add an entry to the /etc/exports file for the folder you want to share. The entry should specify the IP address or hostname of Server 1 and the permissions for accessing the share. For example, to allow access from Server 1 with ip 10.0.0.1, add the following line:
+` /path/to/folder 10.0.0.1(rw,sync,no_subtree_check)`
+
+5th step : Save the changes to the ‘/etc/exports’ file and exit the text editor and restart the NFS server using this command: ‘ sudo systemctl restart nfs-kernel-server ‘
+
+6th step : On Server 1 (the server accessing the shared folder), install the NFS client package. The package name may vary depending on your Linux distribution. For example, on Ubuntu, you can run: ‘sudo apt update && sudo apt install nfs-common’ 
+
+7th step : Create a directory on server s1 where you want to mount the NFS share. For example: ‘ sudo mkdir /mnt/nfs ‘
+
+8th step : Mount the NFS share from Server 2 using the mount command. Replace 10.0.0.2 with the IP address or hostname of Server 2, and /path/to/folder with the shared folder's path on Server 2:
+
+You should be able to access the shared folder from Server 2 on Server 1 under the ‘ /mnt/nfs’ directory.
+
+
