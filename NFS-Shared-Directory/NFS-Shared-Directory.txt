@@ -19,6 +19,10 @@ sudo apt install nfs-kernel-server
 7th step : Create a directory on server s1 where you want to mount the NFS share. For example: ‘ sudo mkdir /mnt/nfs ‘
 
 8th step : Mount the NFS share from Server 2 using the mount command. Replace 10.0.0.2 with the IP address or hostname of Server 2, and /path/to/folder with the shared folder's path on Server 2:
-
+mount -t nfs 10.0.0.1:/path/to/folder /mnt/nfs
 You should be able to access the shared folder from Server 2 on Server 1 under the ‘ /mnt/nfs’ directory.
+
+
+Unmount:
+
 
