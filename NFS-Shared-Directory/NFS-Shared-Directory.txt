@@ -10,7 +10,7 @@ sudo apt install nfs-kernel-server
 3rd step : Open the ‘/etc/exports’ file with a text editor
 
 4th step : Add an entry to the /etc/exports file for the folder you want to share. The entry should specify the IP address or hostname of Server 1 and the permissions for accessing the share. For example, to allow access from Server 1 with ip 10.0.0.1, add the following line:
-` /path/to/folder 10.0.0.1(rw,sync,no_subtree_check)`
+` /path/to/folder 10.0.0.1(rw,sync,no_subtree_check,no_root_squash)`
 
 5th step : Save the changes to the ‘/etc/exports’ file and exit the text editor and restart the NFS server using this command: ‘ sudo systemctl restart nfs-kernel-server ‘
 
